@@ -1,0 +1,29 @@
+{% extends "base.html" %} {% block content %}
+<!-- Navbar -->
+<nav class="navbar navbar-light bg-light">
+  <span class="navbar-brand mb-0 h1">Authentication</span>
+
+  <div class="mt-auto">
+    {% if logged_in %}
+    <a href="{{ url_for('logout') }}" type="button" class="btn btn-dark"
+      >Logout</a
+    >
+    {% else %}
+    <a href="{{ url_for('login') }}" type="button" class="btn btn-dark"
+      >Log In</a
+    >
+    <a href="{{ url_for('register') }}" type="button" class="btn btn-dark"
+      >Register</a
+    >
+    {% endif %}
+  </div>
+</nav>
+
+<!-- Content based on login status -->
+{% if logged_in %}
+<h2 class="text-center d-flex flex-column align-items-center justify-content-center" style='height: 80vh'>
+  Hello, {{ session.username }}
+</h2>
+{% else %}
+<h2 class="text-center d-flex flex-column align-items-center justify-content-center" style='height: 80vh'>Welcome to the Home page</h2>
+{% endif %} {% endblock %}
